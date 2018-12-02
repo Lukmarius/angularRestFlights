@@ -8,10 +8,11 @@ import { PassengersComponent } from './passengers/passengers.component';
 import { AreaComponent } from './area/area.component';
 import {HttpClientModule} from '@angular/common/http';
 import { PaginationComponent } from './pagination/pagination.component';
+import { SizingComponent } from './sizing/sizing.component';
 
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, PassengersComponent, AreaComponent, PaginationComponent],
+  declarations: [AppComponent, SidebarComponent, PassengersComponent, AreaComponent, PaginationComponent, SizingComponent],
   imports: [BrowserModule, AppRoutingModule,
             HttpClientModule],
   providers: [],
