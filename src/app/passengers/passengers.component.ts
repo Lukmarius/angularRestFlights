@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import { Component } from "@angular/core";
 import { DataService } from "../data.service";
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
   templateUrl: "./passengers.component.html",
   styleUrls: ["./passengers.component.scss"]
 })
-export class PassengersComponent implements OnInit {
+export class PassengersComponent {
   passengers$: Object;
 
   constructor(private data: DataService, private route: ActivatedRoute) {
@@ -18,13 +18,6 @@ export class PassengersComponent implements OnInit {
         this.passengers$ = data;
         console.log(this.passengers$);
       });
-    });
-  }
-
-  ngOnInit() {
-    this.data.getPassengers(0, 20).subscribe(data => {
-      this.passengers$ = data;
-      console.log("init");
     });
   }
 
