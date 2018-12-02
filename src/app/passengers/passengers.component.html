@@ -1,0 +1,20 @@
+<h1>Passengers</h1>
+
+<ng-container
+  *ngIf="passengers$; then list; else loading">
+</ng-container>
+
+<ng-template #list>
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"
+  *ngFor="let passenger of passengers$._embedded.passengers">
+  {{passenger.firstname}} {{passenger.lastname}}
+  </li>
+  </ul>
+</ng-template>
+
+<ng-template #loading>
+  <div>
+    Loading...
+  </div>
+</ng-template>
