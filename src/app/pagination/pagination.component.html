@@ -2,23 +2,61 @@
   <ul class="pagination">
 
     <li class="page-item">
-      <a class="page-link" routerLink="#">First</a>
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:1}">First</a>
     </li>
     <li *ngIf="links.prev" class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number}">Previous</a>
     </li>
 
-    <li class="page-item"><a [routerLink]="passengers" [queryParams]="{page:1}" class="page-link">1</a></li>
-    <li class="page-item"><a [routerLink]="passengers" [queryParams]="{page:2}" class="page-link">2</a></li>
-    <li class="page-item"><a [routerLink]="passengers" [queryParams]="{page:3}" class="page-link">3</a></li>
+    <li *ngIf="page.number-2 > 0" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number-2}" class="page-link">
+        {{page.number-2}}
+      </a>
+    </li>
+
+    <li *ngIf="page.number-1 > 0" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number-1}" class="page-link">
+        {{page.number-1}}
+      </a>
+    </li>
+
+    <li *ngIf="page.number > 0" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number}" class="page-link">
+        {{page.number}}
+      </a>
+    </li>
+
+    <li class="page-item active">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+1}" class="page-link">
+        {{page.number+1}}
+      </a>
+    </li>
+
+    <li *ngIf="page.number+2 <= page.totalPages" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+2}" class="page-link">
+        {{page.number+2}}
+      </a>
+    </li>
+
+    <li *ngIf="page.number+3 <= page.totalPages" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+3}" class="page-link">
+        {{page.number+3}}
+      </a>
+    </li>
+
+    <li *ngIf="page.number+4 <= page.totalPages" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+4}" class="page-link">
+        {{page.number+4}}
+      </a>
+    </li>
+
     
     <li *ngIf="links.next" class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+2}">Next</a>
     </li>
     <li class="page-item">
-      <a class="page-link" routerLink="#">Last</a>
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.totalPages}">Last</a>
     </li>
 
   </ul>
-  <span>Current: {{page.number+1}} </span>
 </nav>
