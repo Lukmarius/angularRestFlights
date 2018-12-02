@@ -2,70 +2,78 @@
   <ul class="pagination justify-content-left">
 
     <li class="page-item">
-      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:1}">First</a>
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:0, size:page.size}">First</a>
     </li>
     <li *ngIf="links.prev; else prevdisabled" class="page-item">
-      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number}">Previous</a>
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number-1, size:page.size}">
+      Previous
+      </a>
     </li>
     <ng-template #prevdisabled>
       <li class="page-item disabled">
-        <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number}">Previous</a>
+        <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number-1, size:page.size}">
+        Previous
+        </a>
       </li>
     </ng-template>
 
-    <li *ngIf="page.number-2 > 0" class="page-item">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number-2}" class="page-link">
+    <li *ngIf="page.number-3 >= 0" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number-3, size:page.size}" class="page-link">
         {{page.number-2}}
       </a>
     </li>
 
-    <li *ngIf="page.number-1 > 0" class="page-item">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number-1}" class="page-link">
+    <li *ngIf="page.number-2 >= 0" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number-2, size:page.size}" class="page-link">
         {{page.number-1}}
       </a>
     </li>
 
-    <li *ngIf="page.number > 0" class="page-item">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number}" class="page-link">
+    <li *ngIf="page.number-1 >= 0" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number-1, size:page.size}" class="page-link">
         {{page.number}}
       </a>
     </li>
 
     <li class="page-item active">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number+1}" class="page-link">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number, size:page.size}" class="page-link">
         {{page.number+1}}
       </a>
     </li>
 
-    <li *ngIf="page.number+2 <= page.totalPages" class="page-item">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number+2}" class="page-link">
+    <li *ngIf="page.number+1 <= page.totalPages-1" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+1, size:page.size}" class="page-link">
         {{page.number+2}}
       </a>
     </li>
 
-    <li *ngIf="page.number+3 <= page.totalPages" class="page-item">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number+3}" class="page-link">
+    <li *ngIf="page.number+2 <= page.totalPages-1" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+2, size:page.size}" class="page-link">
         {{page.number+3}}
       </a>
     </li>
 
-    <li *ngIf="page.number+4 <= page.totalPages" class="page-item">
-      <a [routerLink]="passengers" [queryParams]="{page:page.number+4}" class="page-link">
+    <li *ngIf="page.number+3 <= page.totalPages-1" class="page-item">
+      <a [routerLink]="passengers" [queryParams]="{page:page.number+3, size:page.size}" class="page-link">
         {{page.number+4}}
       </a>
     </li>
 
     
     <li *ngIf="links.next; else nextdisabled" class="page-item">
-      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+2}">Next</a>
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+1, size:page.size}">
+      Next
+      </a>
     </li>
     <ng-template #nextdisabled>
       <li class="page-item disabled">
-        <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+2}">Next</a>
+        <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+1, size:page.size}">
+        Next
+        </a>
       </li>
     </ng-template>
     <li class="page-item">
-      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.totalPages}">
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.totalPages-1, size:page.size}">
       Last ({{page.totalPages}})
       </a>
     </li>
