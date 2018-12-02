@@ -1,3 +1,9 @@
-<p>
-  sizing works!
-</p>
+<nav aria-label="...">
+  <ul class="pagination pagination-sm">
+    <li *ngFor="let number of sizes" class="page-item">
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{size:number}" tabindex="-1">
+        {{number}}
+      </a>
+    </li>
+  </ul>
+</nav>

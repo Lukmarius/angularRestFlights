@@ -1,5 +1,5 @@
 <nav aria-label="Page navigation example">
-  <ul class="pagination">
+  <ul class="pagination justify-content-left">
 
     <li class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:1}">First</a>
@@ -65,7 +65,9 @@
       </li>
     </ng-template>
     <li class="page-item">
-      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.totalPages}">Last</a>
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.totalPages}">
+      Last ({{page.totalPages}})
+      </a>
     </li>
 
   </ul>

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-sizing',
-  templateUrl: './sizing.component.html',
-  styleUrls: ['./sizing.component.scss']
+  selector: "app-sizing",
+  templateUrl: "./sizing.component.html",
+  styleUrls: ["./sizing.component.scss"]
 })
-export class SizingComponent implements OnInit {
+export class SizingComponent {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  @Input() page: Object;
+  @Input() collectionName: String;
+  sizes = [5, 20, 50, 500];
 }
