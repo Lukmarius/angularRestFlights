@@ -1,11 +1,24 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" routerLink="#">First</a></li>
-    <li *ngIf="links.prev" class="page-item"><a class="page-link" routerLink="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" routerLink="passengers">1</a></li>
-    <li class="page-item"><a class="page-link" [routerLink]="passengers" [queryParams]="{page:2}">2</a></li>
-    <li class="page-item"><a class="page-link" routerLink="passengers">3</a></li>
-    <li *ngIf="links.next" class="page-item"><a class="page-link" routerLink="#">Next</a></li>
-    <li class="page-item"><a class="page-link" routerLink="#">Last</a></li>
+
+    <li class="page-item">
+      <a class="page-link" routerLink="#">First</a>
+    </li>
+    <li *ngIf="links.prev" class="page-item">
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number}">Previous</a>
+    </li>
+
+    <li class="page-item"><a [routerLink]="passengers" [queryParams]="{page:1}" class="page-link">1</a></li>
+    <li class="page-item"><a [routerLink]="passengers" [queryParams]="{page:2}" class="page-link">2</a></li>
+    <li class="page-item"><a [routerLink]="passengers" [queryParams]="{page:3}" class="page-link">3</a></li>
+    
+    <li *ngIf="links.next" class="page-item">
+      <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+2}">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" routerLink="#">Last</a>
+    </li>
+
   </ul>
+  <span>Current: {{page.number+1}} </span>
 </nav>

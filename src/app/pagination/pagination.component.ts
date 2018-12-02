@@ -10,6 +10,7 @@ export class PaginationComponent implements OnInit {
 
   @Input() page: Object;
   @Input() links: Object;
+  @Input() collectionName: String;
 
   constructor() { }
 

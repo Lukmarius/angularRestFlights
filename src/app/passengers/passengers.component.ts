@@ -18,7 +18,7 @@ export class PassengersComponent implements OnInit {
         console.log(params);
         this.data.getPassengers(params.page, params.size).subscribe(data => {
           this.passengers$ = data;
-          console.log(this.passengers$)
+          console.log("params")
         });
 
       }
@@ -28,7 +28,7 @@ export class PassengersComponent implements OnInit {
   ngOnInit() {
     this.data.getPassengers(0, 20).subscribe(data => {
       this.passengers$ = data;
-      console.log(this.passengers$)
+      console.log("init")
     });
   }
 

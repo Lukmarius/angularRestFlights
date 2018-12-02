@@ -8,18 +8,13 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getPassengers(page, size) {
-
-    if(!page && !size){
+    if (!page && !size) {
       return this.http.get(`http://0.0.0.0:8080/api/passengers`);
-    }
-    else if(!page){
+    } else if (!page) {
       return this.http.get(`http://0.0.0.0:8080/api/passengers?size=${size}`);
-    }
-    else if(!size){
+    } else if (!size) {
+      page = parseInt(page) - 1;
       return this.http.get(`http://0.0.0.0:8080/api/passengers?page=${page}`);
     }
-    
   }
-
-  
 }
