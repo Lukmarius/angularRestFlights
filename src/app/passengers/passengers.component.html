@@ -8,7 +8,7 @@
   <div><span>
   <app-pagination [collectionName]="'passengers'" [page]="passengers$.page" [links]="passengers$._links" ></app-pagination>
   </span><span>
-  <app-sizing></app-sizing>
+  <app-sizing [page]="passengers$.page"></app-sizing>
   </span>
   </div>
   <ul class="list-group list-group-flush">
