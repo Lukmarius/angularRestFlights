@@ -5,6 +5,7 @@
 </ng-container>
 
 <ng-template #list>
+  <app-pagination [page]="passengers$.page" [links]="passengers$._links" ></app-pagination>
   <ul class="list-group list-group-flush">
   <li class="list-group-item"
   *ngFor="let passenger of passengers$._embedded.passengers">

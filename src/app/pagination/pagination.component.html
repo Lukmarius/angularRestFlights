@@ -1,3 +1,11 @@
-<p>
-  pagination works!
-</p>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" routerLink="#">First</a></li>
+    <li *ngIf="links.prev" class="page-item"><a class="page-link" routerLink="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" routerLink="passengers">1</a></li>
+    <li class="page-item"><a class="page-link" [routerLink]="passengers" [queryParams]="{page:2}">2</a></li>
+    <li class="page-item"><a class="page-link" routerLink="passengers">3</a></li>
+    <li *ngIf="links.next" class="page-item"><a class="page-link" routerLink="#">Next</a></li>
+    <li class="page-item"><a class="page-link" routerLink="#">Last</a></li>
+  </ul>
+</nav>

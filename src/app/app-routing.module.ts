@@ -11,7 +11,8 @@ const routes: Routes = [
   },
   {
     path:'passengers',
-    component: PassengersComponent
+    component: PassengersComponent,
+    // pathMatch: 'full'
   }
 ];
 
