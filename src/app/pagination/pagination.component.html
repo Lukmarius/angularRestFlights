@@ -4,9 +4,14 @@
     <li class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:1}">First</a>
     </li>
-    <li *ngIf="links.prev" class="page-item">
+    <li *ngIf="links.prev; else prevdisabled" class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number}">Previous</a>
     </li>
+    <ng-template #prevdisabled>
+      <li class="page-item disabled">
+        <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number}">Previous</a>
+      </li>
+    </ng-template>
 
     <li *ngIf="page.number-2 > 0" class="page-item">
       <a [routerLink]="passengers" [queryParams]="{page:page.number-2}" class="page-link">
@@ -51,9 +56,14 @@
     </li>
 
     
-    <li *ngIf="links.next" class="page-item">
+    <li *ngIf="links.next; else nextdisabled" class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+2}">Next</a>
     </li>
+    <ng-template #nextdisabled>
+      <li class="page-item disabled">
+        <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.number+2}">Next</a>
+      </li>
+    </ng-template>
     <li class="page-item">
       <a class="page-link" [routerLink]="passengers" [queryParams]="{page:page.totalPages}">Last</a>
     </li>
