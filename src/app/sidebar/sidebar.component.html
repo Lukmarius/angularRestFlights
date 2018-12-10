@@ -12,9 +12,20 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="airports">Airports</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Routes</a>
-      </li>
+      
+      <button
+        class="btn btn-link btn-margin"
+        *ngIf="!auth.isAuthenticated()"
+        (click)="auth.login()">
+          Log In
+      </button>
+
+      <button
+        class="btn btn-link btn-margin"
+        *ngIf="auth.isAuthenticated()"
+        (click)="auth.logout()">
+          Log Out
+      </button>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

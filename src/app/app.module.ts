@@ -10,13 +10,14 @@ import {HttpClientModule} from '@angular/common/http';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SizingComponent } from './sizing/sizing.component';
 import { AirportsComponent } from './airports/airports.component';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
   declarations: [AppComponent, SidebarComponent, PassengersComponent, AreaComponent, PaginationComponent, SizingComponent, AirportsComponent],
   imports: [BrowserModule, AppRoutingModule,
             HttpClientModule],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
