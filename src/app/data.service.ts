@@ -9,7 +9,7 @@ export class DataService {
 
   basePath = "http://0.0.0.0:8080/api";
 
-  getPassengers(url) {
+  getResources(url) {
     return this.http.get(this.basePath + url);
   }
 }

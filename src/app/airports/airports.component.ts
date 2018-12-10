@@ -5,12 +5,12 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 
 @Component({
-  selector: "app-passengers",
-  templateUrl: "./passengers.component.html",
-  styleUrls: ["./passengers.component.scss"]
+  selector: "app-airports",
+  templateUrl: "./airports.component.html",
+  styleUrls: ["./airports.component.scss"]
 })
-export class PassengersComponent {
-  passengers$: Object;
+export class AirportsComponent {
+  airports$: Object;
   size;
 
   constructor(
@@ -21,8 +21,8 @@ export class PassengersComponent {
     this.size = 20;
     this.route.queryParams.subscribe(() => {
       this.dataService.getResources(router.url).subscribe(data => {
-        this.passengers$ = data;
-        console.log(this.passengers$);
+        this.airports$ = data;
+        console.log(this.airports$);
       });
     });
   }

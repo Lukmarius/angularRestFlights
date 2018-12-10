@@ -1,0 +1,26 @@
+<h1>airports</h1>
+
+<ng-container
+  *ngIf="airports$; then list; else loading">
+</ng-container>
+
+<ng-template #list>
+  <div><span>
+  <app-pagination [collectionName]="'airports'" [page]="airports$.page" [links]="airports$._links" ></app-pagination>
+  </span><span>
+  <app-sizing [page]="airports$.page"></app-sizing>
+  </span>
+  </div>
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item"
+  *ngFor="let airp of airports$._embedded.airports">
+  {{airp.airportId}} {{airp.city}} {{airp.country}} {{airp.latidute}} {{airp.longitude}}
+  </li>
+  </ul>
+</ng-template>
+
+<ng-template #loading>
+  <div>
+    Loading...
+  </div>
+</ng-template>

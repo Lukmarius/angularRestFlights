@@ -1,17 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {PassengersComponent} from './passengers/passengers.component';
-import {AreaComponent} from './area/area.component';
-
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { PassengersComponent } from "./passengers/passengers.component";
+import { AreaComponent } from "./area/area.component";
+import { AirportsComponent } from "./airports/airports.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: AreaComponent
   },
   {
-    path:'passengers',
-    component: PassengersComponent,
+    path: "passengers",
+    component: PassengersComponent
+    // pathMatch: 'full'
+  },
+  {
+    path: "airports",
+    component: AirportsComponent
     // pathMatch: 'full'
   }
 ];
@@ -20,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
