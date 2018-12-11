@@ -6,12 +6,18 @@ import { AppComponent } from "./app.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { PassengersComponent } from './passengers/passengers.component';
 import { AreaComponent } from './area/area.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SizingComponent } from './sizing/sizing.component';
 import { AirportsComponent } from './airports/airports.component';
 import { AuthService } from './auth.service';
+// import { AuthHttp, AuthConfig } from 'angular-jwt';
 
+// export function authHttpServiceFactory(http: HttpClientModule, options: RequestOptions) {
+//   return new AuthHttp(new AuthConfig({
+//     tokenGetter: (() => localStorage.getItem('access_token'))
+//   }), http, options);
+// }
 
 @NgModule({
   declarations: [AppComponent, SidebarComponent, PassengersComponent, AreaComponent, PaginationComponent, SizingComponent, AirportsComponent],
