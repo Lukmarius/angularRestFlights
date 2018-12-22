@@ -11,15 +11,15 @@ import { Observable } from "rxjs";
 })
 export class PassengersComponent {
   passengers$: Object;
-  size;
 
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.size = 20;
+    
     this.route.queryParams.subscribe(() => {
+      this.passengers$ = null;
       this.dataService.getResources(router.url).subscribe(data => {
         this.passengers$ = data;
         console.log(this.passengers$);
