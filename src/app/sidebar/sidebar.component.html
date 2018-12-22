@@ -22,7 +22,7 @@
 
       <button
         class="btn btn-link btn-margin"
-        
+        *ngIf="auth.isAuthenticated()"
         (click)="auth.logout()">
           Log Out
       </button>

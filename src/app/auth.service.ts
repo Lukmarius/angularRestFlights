@@ -13,6 +13,7 @@ export class AuthService {
   auth0 = new auth0.WebAuth({
     clientID: "MJkgmxaGyCE4OcS_9BlyWkybIIJQNZv1",
     domain: "mj2.eu.auth0.com",
+    audience: "https://mj2.eu.auth0.com/api/v2/", // THIS MAKE JWT format of access token
     responseType: "token id_token",
     redirectUri: "http://localhost:4200/",
     scope: "openid"
@@ -86,9 +87,7 @@ export class AuthService {
   public isAuthenticated(): boolean {
     // Check whether the current time is past the
     // access token's expiry time
-    console.log("AUTH: ");
-    console.log(localStorage.getItem('isLoggedIn'));
-    // console.log(this._accessToken);
+    console.log(new Date().getTime() < this._expiresAt);
     return new Date().getTime() < this._expiresAt;
   }
 }

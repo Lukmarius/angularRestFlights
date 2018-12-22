@@ -12,9 +12,12 @@ export class DataService {
 
   getResources(url) {
     // let headers = new Headers();
-    let headers = new HttpHeaders();
-    headers.set('authentication', `Bearer ${this.auth.accessToken}`);
-    console.log(`Bearer ${this.auth.accessToken}`);
-    return this.http.get(this.basePath + url, {headers});
+    let heads = new HttpHeaders();
+    heads = heads.append('Authorization', `Bearer ${this.auth.accessToken}`);
+    console.log("HTTP GET............")
+    console.log(`access token: ${this.auth.accessToken}`);
+    console.log(`id token: ${this.auth.idToken}`);
+    console.log(heads.get("Authorization"));
+    return this.http.get(this.basePath + url, {headers: heads});
   }
 }
