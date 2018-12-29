@@ -20,6 +20,7 @@ export class AirportsComponent {
   ) {
     this.size = 20;
     this.route.queryParams.subscribe(() => {
+      this.airports$ = null;
       this.dataService.getResources(router.url).subscribe(data => {
         this.airports$ = data;
         console.log(this.airports$);
