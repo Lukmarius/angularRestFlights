@@ -3,6 +3,7 @@ import { DataService } from "../data.service";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-passengers",
@@ -11,19 +12,24 @@ import { Observable } from "rxjs";
 })
 export class PassengersComponent {
   passengers$: Object;
+  err$: boolean;
 
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
-    
     this.route.queryParams.subscribe(() => {
       this.passengers$ = null;
-      this.dataService.getResources(router.url).subscribe(data => {
-        this.passengers$ = data;
-        console.log(this.passengers$);
-      });
+      this.dataService.getResources(router.url).subscribe(
+        data => {
+          this.err$ = false;
+          this.passengers$ = data;
+          console.log(this.passengers$);
+        },
+        error => (this.err$ = true)
+      );
     });
   }
 }

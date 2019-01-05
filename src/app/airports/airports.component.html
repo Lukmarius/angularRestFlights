@@ -22,5 +22,9 @@
 </ng-template>
 
 <ng-template #loading>
-  <img src="assets/ring.svg" alt="loading">
+  <img 
+  *ngIf="auth.isAuthenticated() && !err$"
+   src="assets/ring.svg" alt="loading">
+   <span *ngIf="!auth.isAuthenticated()" (click)="auth.login()"> Please Log in. </span>
+   <span *ngIf="err$ && auth.isAuthenticated() "> Sorry, smth went wrong. </span>
 </ng-template>
