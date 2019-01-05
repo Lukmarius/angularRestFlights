@@ -12,12 +12,23 @@ const routes: Routes = [
   {
     path: "passengers",
     component: PassengersComponent
-    // pathMatch: 'full'
+    // pathMatch: "prefix"
+  },
+  {
+    path:
+      "passengers/search/findPassengersByFirstnameIsContainingOrLastnameIsContaining",
+    component: PassengersComponent
+    // pathMatch: "prefix"
   },
   {
     path: "airports",
     component: AirportsComponent
     // pathMatch: 'full'
+  },
+  {
+    path:
+      "airports/search/findAirportsByAirportIdIsContainingOrCityIsContainingOrCountryIsContaining",
+    component: AirportsComponent
   }
 ];
 
