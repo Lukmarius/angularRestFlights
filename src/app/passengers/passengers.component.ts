@@ -43,7 +43,7 @@ export class PassengersComponent {
   }
 
   confirmEdit(firstName: String, lastName: String) {
-    console.log("SEND!!!!!");
+    console.log(`SEND: ${firstName} - ${lastName}`);
     this.editing$ = null;
   }
 }

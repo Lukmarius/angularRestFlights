@@ -28,8 +28,9 @@
   </ng-template>
 
   <ng-template #edit>
-  <input #firstName> <input #lastName> <button class="btn btn-primary" 
-  (click)="exitFromEditing()">Cancel</button>
+  <input #firstName value="{{passenger.firstname}}"> <input #lastName value="{{passenger.lastname}}"> 
+  <button class="btn btn-primary" (click)="exitFromEditing()">Cancel</button>
+  <button class="btn btn-primary" (click)="confirmEdit(firstName.value, lastName.value)">Send</button>
   </ng-template>
 
   </li>
