@@ -15,9 +15,23 @@
   </span>
   </div>
   <ul class="list-group list-group-flush">
+
   <li class="list-group-item"
   *ngFor="let passenger of passengers$._embedded.passengers">
-  {{passenger.firstname}} {{passenger.lastname}}
+  <ng-container
+  *ngIf="editing$ === passenger.passengerId; then edit; else normalShow">
+  </ng-container>
+
+  <ng-template #normalShow>
+  {{passenger.firstname}} {{passenger.lastname}} <button class="btn btn-primary" 
+  (click)="showEditInputs(passenger.passengerId)">Edit</button>
+  </ng-template>
+
+  <ng-template #edit>
+  <input #firstName> <input #lastName> <button class="btn btn-primary" 
+  (click)="exitFromEditing()">Cancel</button>
+  </ng-template>
+
   </li>
   </ul>
 </ng-template>

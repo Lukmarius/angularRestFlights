@@ -13,6 +13,7 @@ import { AuthService } from "../auth.service";
 export class PassengersComponent {
   passengers$: Object;
   err$: boolean;
+  editing$: number;
 
   constructor(
     private dataService: DataService,
@@ -31,5 +32,18 @@ export class PassengersComponent {
         error => (this.err$ = true)
       );
     });
+  }
+
+  showEditInputs(id: number): void {
+    this.editing$ = id;
+  }
+
+  exitFromEditing(): void {
+    this.editing$ = null;
+  }
+
+  confirmEdit(firstName: String, lastName: String) {
+    console.log("SEND!!!!!");
+    this.editing$ = null;
   }
 }
