@@ -42,8 +42,16 @@ export class PassengersComponent {
     this.editing$ = null;
   }
 
-  confirmEdit(firstName: String, lastName: String) {
-    console.log(`SEND: ${firstName} - ${lastName}`);
+  confirmEdit(id: number, firstName: String, lastName: String) {
+    console.log(`SEND: ${id} - ${firstName} - ${lastName}`);
+    let passenger = { firstname: firstName, lastname: lastName };
+    this.dataService.patchPassenger(id, passenger).subscribe(
+      data => {
+        alert("Push completed");
+        console.log(data);
+      },
+      error => alert("Error, sorry")
+    );
     this.editing$ = null;
   }
 }

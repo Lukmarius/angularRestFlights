@@ -16,7 +16,6 @@ export class DataService {
   basePath = "http://0.0.0.0:8080/api";
 
   getResources(url) {
-    // let headers = new Headers();
     let heads = new HttpHeaders();
     heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);
     return this.http.get(this.basePath + url, { headers: heads });
@@ -32,5 +31,13 @@ export class DataService {
     this.router.navigateByUrl(
       `airports/search/findAirportsByAirportIdIsContainingOrCityIsContainingOrCountryIsContaining?word=${word}`
     );
+  }
+
+  patchPassenger(id: number, passenger: Object) {
+    let heads = new HttpHeaders();
+    heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);
+    return this.http.patch(this.basePath + `/passengers/${id}`, passenger, {
+      headers: heads
+    });
   }
 }
