@@ -4,20 +4,36 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
-import { PassengersComponent } from './passengers/passengers.component';
-import { AreaComponent } from './area/area.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PaginationComponent } from './pagination/pagination.component';
-import { SizingComponent } from './sizing/sizing.component';
-import { AirportsComponent } from './airports/airports.component';
-import { AuthService } from './auth.service';
-import { JwtModule, JWT_OPTIONS } from 'angular-jwt';
-
+import { PassengersComponent } from "./passengers/passengers.component";
+import { AreaComponent } from "./area/area.component";
+import { HttpClientModule } from "@angular/common/http";
+import { PaginationComponent } from "./pagination/pagination.component";
+import { SizingComponent } from "./sizing/sizing.component";
+import { AirportsComponent } from "./airports/airports.component";
+import { AuthService } from "./auth.service";
+import { ModalPassengerComponent } from "./modal-passenger/modal-passenger.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent, PassengersComponent, AreaComponent, PaginationComponent, SizingComponent, AirportsComponent],
-  imports: [BrowserModule, AppRoutingModule,
-            HttpClientModule],
+  declarations: [
+    AppComponent,
+    SidebarComponent,
+    PassengersComponent,
+    AreaComponent,
+    PaginationComponent,
+    SizingComponent,
+    AirportsComponent,
+    ModalPassengerComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatDialogModule,
+    BrowserAnimationsModule
+  ],
+  entryComponents: [ModalPassengerComponent],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })

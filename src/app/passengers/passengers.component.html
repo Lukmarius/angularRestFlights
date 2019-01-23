@@ -5,6 +5,7 @@
 </ng-container>
 
 <ng-template #list>
+
   <div>
   <span>
   <app-pagination [page]="passengers$.page" 
@@ -14,6 +15,12 @@
   <app-sizing [page]="passengers$.page"></app-sizing>
   </span>
   </div>
+
+  <div>
+  <button class="btn btn-light" (click)="displayDialogBox()">Add new passenger
+  </button>
+  </div>
+
   <ul class="list-group list-group-flush">
 
   <li class="list-group-item"

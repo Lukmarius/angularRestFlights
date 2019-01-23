@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "../auth.service";
 import { Passenger } from "../passenger";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalPassengerComponent } from "../modal-passenger/modal-passenger.component";
 
 @Component({
   selector: "app-passengers",
@@ -21,7 +23,8 @@ export class PassengersComponent implements OnInit {
     private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private dialog: MatDialog
   ) {
     this.editedPassengersMap$ = new Map<number, Passenger>();
   }
@@ -37,6 +40,15 @@ export class PassengersComponent implements OnInit {
         },
         error => (this.err$ = true)
       );
+    });
+  }
+
+  displayDialogBox() {
+    this.dialog.open(ModalPassengerComponent, {
+      height: "300px",
+      width: "500px",
+      disableClose: true,
+      hasBackdrop: true
     });
   }
 
