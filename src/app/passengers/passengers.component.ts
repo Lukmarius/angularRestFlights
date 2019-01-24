@@ -17,7 +17,6 @@ export class PassengersComponent implements OnInit {
   passengers$: Object;
   err$: boolean;
   editing$: number;
-  editedPassengersMap$: Map<number, Passenger>;
 
   constructor(
     private dataService: DataService,
@@ -25,9 +24,7 @@ export class PassengersComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private dialog: MatDialog
-  ) {
-    this.editedPassengersMap$ = new Map<number, Passenger>();
-  }
+  ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(() => this.getPassengers());
@@ -67,15 +64,11 @@ export class PassengersComponent implements OnInit {
     let passenger = new Passenger(firstName, lastName);
     this.dataService.patchPassenger(id, passenger).subscribe(
       data => {
-        this.savePassengerInView(id, passenger);
+        this.getPassengers();
         console.log(data);
       },
       error => alert("Error, sorry")
     );
     this.editing$ = null;
-  }
-
-  savePassengerInView(id: number, passenger: Passenger): void {
-    this.editedPassengersMap$.set(id, passenger);
   }
 }
