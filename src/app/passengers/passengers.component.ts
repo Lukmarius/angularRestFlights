@@ -30,17 +30,19 @@ export class PassengersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(() => {
-      this.passengers$ = null;
-      this.dataService.getResources(this.router.url).subscribe(
-        data => {
-          this.err$ = false;
-          this.passengers$ = data;
-          console.log(this.passengers$);
-        },
-        error => (this.err$ = true)
-      );
-    });
+    this.route.queryParams.subscribe(() => this.getPassengers());
+  }
+
+  getPassengers(): void {
+    this.passengers$ = null;
+    this.dataService.getResources(this.router.url).subscribe(
+      data => {
+        this.err$ = false;
+        this.passengers$ = data;
+        console.log(this.passengers$);
+      },
+      error => (this.err$ = true)
+    );
   }
 
   displayDialogBox() {

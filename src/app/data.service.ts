@@ -18,7 +18,9 @@ export class DataService {
   getResources(url) {
     let heads = new HttpHeaders();
     heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);
-    return this.http.get(this.basePath + url, { headers: heads });
+    return this.http.get(this.basePath + url, {
+      headers: heads
+    });
   }
 
   searchPassengersByAny(word: String) {
