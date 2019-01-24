@@ -18,7 +18,7 @@ export class PaginationComponent implements OnInit {
     if (this.router.url.includes("passengers")) {
       this.sortBy = "passengerId";
     } else if (this.router.url.includes("airports")) {
-      this.sortBy = "airportId";
+      this.sortBy = "";
     }
   }
 }
