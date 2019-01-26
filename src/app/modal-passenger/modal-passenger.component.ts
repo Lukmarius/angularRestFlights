@@ -20,9 +20,17 @@ export class ModalPassengerComponent implements OnInit {
   }
 
   addPassenger(firstName: String, lastName: String): void {
-    this.dataService.postPassenger({
-      firstname: firstName,
-      lastname: lastName
-    });
+    this.dataService
+      .postPassenger({
+        firstname: firstName,
+        lastname: lastName
+      })
+      .subscribe(
+        data => {
+          console.log(data);
+          this.dialogRef.close(); // or display new passenger??
+        },
+        error => alert("Error, sorry")
+      );
   }
 }
