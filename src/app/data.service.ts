@@ -15,7 +15,7 @@ export class DataService {
 
   basePath = "http://0.0.0.0:8080/api";
 
-  getResources(url) {
+  getResources(url: String) {
     let heads = new HttpHeaders();
     heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);
     return this.http.get(this.basePath + url, {
@@ -39,6 +39,14 @@ export class DataService {
     let heads = new HttpHeaders();
     heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);
     return this.http.patch(this.basePath + `/passengers/${id}`, passenger, {
+      headers: heads
+    });
+  }
+
+  postPassenger(passenger: Object) {
+    let heads = new HttpHeaders();
+    heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);
+    return this.http.post(this.basePath + `/passengers`, passenger, {
       headers: heads
     });
   }

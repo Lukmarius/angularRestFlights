@@ -2,8 +2,16 @@
 <h3>
 Add new Passenger
 </h3>
-<div>
-form will be added...
+
+<div class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" placeholder="First name" #firstName>
+    <input class="form-control mr-sm-2" placeholder="Last name" #lastName>
 </div>
-<button class="btn btn-danger" (click)="onCloseClick()">Close</button>
+<span>
+    <button 
+    class="btn btn-outline-primary my-2 my-sm-0" type="button" 
+    (click)="addPassenger(firstName.value, lastName.value)"
+    >Send</button>
+    <button class="btn btn-danger" (click)="onCloseClick()">Close</button>
+</span>
 </div>
