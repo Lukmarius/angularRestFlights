@@ -12,7 +12,7 @@ import { AuthService } from "../auth.service";
 })
 export class AirportsComponent {
   airports$: Object;
-  err$: boolean;
+  err$: Object;
 
   constructor(
     private dataService: DataService,
@@ -27,7 +27,7 @@ export class AirportsComponent {
           this.airports$ = data;
           console.log(this.airports$);
         },
-        error => (this.err$ = true)
+        error => (this.err$ = error)
       );
     });
   }

@@ -1,10 +1,10 @@
 <h1>airports</h1>
 
 <ng-container
-  *ngIf="airports$; then list; else loading">
+  *ngIf="airports$; then content; else info">
 </ng-container>
 
-<ng-template #list>
+<ng-template #content>
   <div>
   <span>
   <app-pagination [page]="airports$.page" [links]="airports$._links" ></app-pagination>
@@ -21,10 +21,21 @@
   </ul>
 </ng-template>
 
-<ng-template #loading>
-  <img 
-  *ngIf="auth.isAuthenticated() && !err$"
-   src="assets/ring.svg" alt="loading">
-   <span *ngIf="!auth.isAuthenticated()" (click)="auth.login()"> Please Log in. </span>
-   <span *ngIf="err$ && auth.isAuthenticated() "> Sorry, smth went wrong. </span>
+
+<ng-template #info>
+
+  <ng-container
+  *ngIf="!err$; then loading; else error">
+  </ng-container>
+
+  <ng-template #loading>
+    <img 
+    src="assets/ring.svg" alt="loading">
+  </ng-template>
+
+  <ng-template #error>
+   <span *ngIf="err$.status == 401" (click)="auth.login()"> Please Log in. </span>
+   <span *ngIf="err$.status != 401" > Sorry, smth went wrong. </span>
+  </ng-template>
+
 </ng-template>

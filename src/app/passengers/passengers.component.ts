@@ -14,9 +14,9 @@ import { ModalPassengerComponent } from "../modal-passenger/modal-passenger.comp
   styleUrls: ["./passengers.component.scss"]
 })
 export class PassengersComponent implements OnInit {
-  passengers$: Object;
-  err$: boolean;
-  editing$: number;
+  private passengers$: Object;
+  private err$: Object;
+  private editing$: number;
 
   constructor(
     private dataService: DataService,
@@ -38,7 +38,9 @@ export class PassengersComponent implements OnInit {
         this.passengers$ = data;
         console.log(this.passengers$);
       },
-      error => (this.err$ = true)
+      error => {
+        (this.err$ = error), console.log(error);
+      }
     );
   }
 

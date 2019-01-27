@@ -1,17 +1,40 @@
-<div>
-<h3>
-Add new Passenger
-</h3>
+<div [ngSwitch]="status">
 
-<div class="form-group">
-    <input class="form-control mr-sm-2" placeholder="First name" #firstName>
-    <input class="form-control mr-sm-2" placeholder="Last name" #lastName>
-</div>
-<span>
-    <button 
-    class="btn btn-outline-primary my-2 my-sm-0" type="button" 
-    (click)="addPassenger(firstName.value, lastName.value)"
-    >Send</button>
-    <button class="btn btn-danger" (click)="onCloseClick()">Close</button>
-</span>
+    <div *ngSwitchCase="'LOADING'">
+        <img 
+        src="assets/ring.svg" alt="loading">
+    </div>
+
+    <div *ngSwitchCase="'ERROR'">
+        ERROR {{ error$.status }}
+        <p>{{ error$.name }}</p>
+        <p *ngIf="error$.status == 401">
+            <h5>Please, Sign In.</h5>
+        
+        <button class="btn btn-danger" (click)="onCloseClick()">Close</button>
+    </div>
+
+    <div *ngSwitchCase="'COMPLETE'">
+        <h4>Adding passenger complete:</h4>
+        <p>{{ addedPassenger$.firstname }} {{ addedPassenger$.lastname }}</p>
+        <button class="btn btn-success" (click)="closeAndRefresh()">Close</button>
+    </div>
+
+    <div *ngSwitchDefault>
+        <h3>
+        Add new Passenger
+        </h3>
+
+        <div class="form-group">
+            <input class="form-control mr-sm-2" placeholder="First name" #firstName>
+            <input class="form-control mr-sm-2" placeholder="Last name" #lastName>
+        </div>
+        <span>
+            <button 
+            class="btn btn-outline-primary my-2 my-sm-0" type="button" 
+            (click)="addPassenger(firstName.value, lastName.value)"
+            >Send</button>
+            <button class="btn btn-danger" (click)="onCloseClick()">Close</button>
+        </span>
+    </div>
 </div>

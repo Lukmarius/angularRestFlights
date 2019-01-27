@@ -35,6 +35,10 @@ export class DataService {
     );
   }
 
+  // showLastPassengersPage(page: number): void {
+  //   this.router.navigateByUrl(`passengers?page=32&sort=passengerId`)
+  // }
+
   patchPassenger(id: number, passenger: Object) {
     let heads = new HttpHeaders();
     heads = heads.append("Authorization", `Bearer ${this.auth.accessToken}`);

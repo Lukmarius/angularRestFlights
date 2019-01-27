@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { DataService } from "../data.service";
+import { Status } from "./status";
 
 @Component({
   selector: "app-modal-passenger",
@@ -8,18 +9,30 @@ import { DataService } from "../data.service";
   styleUrls: ["./modal-passenger.component.scss"]
 })
 export class ModalPassengerComponent implements OnInit {
+  private status: Status;
+  private addedPassenger$: Object;
+  private error$: Object;
+
   constructor(
     private dialogRef: MatDialogRef<ModalPassengerComponent>,
     private dataService: DataService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.status = Status.DEFAULT;
+  }
 
   onCloseClick(): void {
     this.dialogRef.close();
   }
 
+  closeAndRefresh(): void {
+    this.dialogRef.close();
+    // refresh last page................
+  }
+
   addPassenger(firstName: String, lastName: String): void {
+    this.status = Status.LOADING;
     this.dataService
       .postPassenger({
         firstname: firstName,
@@ -28,9 +41,12 @@ export class ModalPassengerComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.dialogRef.close(); // or display new passenger??
+          this.addedPassenger$ = data;
+          this.status = Status.COMPLETE;
         },
-        error => alert("Error, sorry")
+        error => {
+          (this.status = Status.ERROR), (this.error$ = error);
+        }
       );
   }
 }
