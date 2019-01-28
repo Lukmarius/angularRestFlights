@@ -14,10 +14,14 @@
   </span>
   </div>
   <ul class="list-group list-group-flush">
-  <li class="list-group-item"
-  *ngFor="let airp of airports$._embedded.airports">
-  {{airp.airportId}} {{airp.city}} {{airp.country}} {{airp.latidute}} {{airp.longitude}}
-  </li>
+    
+    <li class="list-group-item"
+    *ngFor="let airp of airports$._embedded.airports">
+      <a [routerLink]="['/airports', airp.airportId]">
+      {{airp.airportId}} {{airp.city}} {{airp.country}} {{airp.latidute}} {{airp.longitude}}
+      </a>
+    </li>
+    
   </ul>
 </ng-template>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { DataService } from "../data.service";
-import { Status } from "./status";
+import { Status } from "../status";
 
 @Component({
   selector: "app-modal-passenger",

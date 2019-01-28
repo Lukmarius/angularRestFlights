@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { PassengersComponent } from "./passengers/passengers.component";
 import { AreaComponent } from "./area/area.component";
 import { AirportsComponent } from "./airports/airports.component";
+import { DetailsAirportComponent } from "./details-airport/details-airport.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: "airports",
     component: AirportsComponent
+    // pathMatch: 'full'
+  },
+  {
+    path: "airports/:id",
+    component: DetailsAirportComponent
     // pathMatch: 'full'
   },
   {

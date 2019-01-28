@@ -14,6 +14,7 @@ import { AuthService } from "./auth.service";
 import { ModalPassengerComponent } from "./modal-passenger/modal-passenger.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DetailsAirportComponent } from './details-airport/details-airport.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     PaginationComponent,
     SizingComponent,
     AirportsComponent,
-    ModalPassengerComponent
+    ModalPassengerComponent,
+    DetailsAirportComponent
   ],
   imports: [
     BrowserModule,

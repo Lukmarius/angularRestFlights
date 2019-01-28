@@ -1,0 +1,21 @@
+<div [ngSwitch]="status$">
+
+    <div *ngSwitchCase="'LOADING'">
+        <img 
+        src="assets/ring.svg" alt="loading">
+    </div>
+
+    <div *ngSwitchCase="'ERROR'">
+        ERROR {{ error$.status }}
+        <p>{{ error$.name }}</p>
+        <p *ngIf="error$.status == 401">
+            <h5>Please, Sign In.</h5>
+    </div>
+
+    <div *ngSwitchCase="'COMPLETE'">
+        <h3>Airport {{ airport$.airportId }}</h3>
+        <p>Country: {{ airport$.country }}</p>
+        <p>City: {{ airport$.city }}</p>
+    </div>
+
+</div>
