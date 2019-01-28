@@ -4,6 +4,7 @@ import { switchMap } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { DataService } from "../data.service";
 import { Status } from "../status";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-details-airport",
@@ -18,7 +19,8 @@ export class DetailsAirportComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.status$ = Status.LOADING;
   }
@@ -27,7 +29,6 @@ export class DetailsAirportComponent implements OnInit {
     this.dataService.getResources(this.router.url).subscribe(
       data => {
         this.airport$ = data;
-        console.log(this.airport$);
         this.status$ = Status.COMPLETE;
       },
       error => ((this.error$ = error), (this.status$ = Status.ERROR))

@@ -1,4 +1,4 @@
-<h1>airports</h1>
+<h1>Airports</h1>
 
 <ng-container
   *ngIf="airports$; then content; else info">
@@ -18,7 +18,7 @@
     <li class="list-group-item"
     *ngFor="let airp of airports$._embedded.airports">
       <a [routerLink]="['/airports', airp.airportId]">
-      {{airp.airportId}} {{airp.city}} {{airp.country}} {{airp.latidute}} {{airp.longitude}}
+      {{airp.airportId}} {{airp.city}} {{airp.country}}
       </a>
     </li>
     

@@ -14,8 +14,14 @@
 
     <div *ngSwitchCase="'COMPLETE'">
         <h3>Airport {{ airport$.airportId }}</h3>
-        <p>Country: {{ airport$.country }}</p>
-        <p>City: {{ airport$.city }}</p>
+        <h4>Country: {{ airport$.country }}</h4>
+        <h4>City: {{ airport$.city }}</h4>
+        <div *ngIf="auth.isAuthenticated()">
+            <app-google-maps [lat]="airport$.latitude" [lng]="airport$.longitude"></app-google-maps>
+        </div>
+        <div *ngIf="!auth.isAuthenticated()">
+            Please, sign in to see the google map :)
+        </div>
     </div>
 
 </div>

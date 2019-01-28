@@ -14,7 +14,9 @@ import { AuthService } from "./auth.service";
 import { ModalPassengerComponent } from "./modal-passenger/modal-passenger.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { DetailsAirportComponent } from './details-airport/details-airport.component';
+import { DetailsAirportComponent } from "./details-airport/details-airport.component";
+import { AgmCoreModule } from "@agm/core";
+import { GoogleMapsComponent } from './google-maps/google-maps.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +28,18 @@ import { DetailsAirportComponent } from './details-airport/details-airport.compo
     SizingComponent,
     AirportsComponent,
     ModalPassengerComponent,
-    DetailsAirportComponent
+    DetailsAirportComponent,
+    GoogleMapsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBzYwkrUDWu8ZK5RWHAuRPTAUWFmwFpLhU"
+    })
   ],
   entryComponents: [ModalPassengerComponent],
   providers: [AuthService],
